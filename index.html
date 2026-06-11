@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Muhammad AbdurRehman | Full Stack Developer</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+  :root{--primary:#2563eb;--dark:#1e293b;--light:#f8fafc;--gray:#64748b}
+  *{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',sans-serif;background:#fff;color:var(--dark)}
+
+  /* NAV */
+  .navbar{background:#fff!important;box-shadow:0 2px 20px rgba(0,0,0,.08);padding:14px 0}
+  .navbar-brand{font-weight:800;font-size:1.4rem;color:var(--primary)!important}
+  .nav-link{font-weight:500;color:var(--dark)!important;margin:0 4px;transition:.2s}
+  .nav-link:hover,.nav-link.active{color:var(--primary)!important}
+  .btn-hire{background:var(--primary);color:#fff!important;border-radius:50px;padding:8px 22px!important}
+  .btn-hire:hover{background:#1d4ed8}
+
+  /* HERO */
+  #hero{min-height:100vh;background:linear-gradient(135deg,#f0f4ff 0%,#fff 60%);display:flex;align-items:center;padding-top:80px}
+  .hero-badge{background:#dbeafe;color:var(--primary);padding:6px 18px;border-radius:50px;font-size:.85rem;font-weight:600;display:inline-block;margin-bottom:20px}
+  .hero-title{font-size:3rem;font-weight:800;line-height:1.15;color:var(--dark)}
+  .hero-title span{color:var(--primary)}
+  .hero-sub{color:var(--gray);font-size:1.05rem;max-width:500px;margin:18px 0 32px}
+  .btn-primary-custom{background:var(--primary);color:#fff;border:none;padding:14px 32px;border-radius:50px;font-weight:600;font-size:1rem;transition:.2s;text-decoration:none;display:inline-block}
+  .btn-primary-custom:hover{background:#1d4ed8;transform:translateY(-2px);color:#fff}
+  .btn-outline-custom{background:transparent;color:var(--primary);border:2px solid var(--primary);padding:14px 32px;border-radius:50px;font-weight:600;font-size:1rem;transition:.2s;text-decoration:none;display:inline-block}
+  .btn-outline-custom:hover{background:var(--primary);color:#fff}
+  .hero-avatar{width:360px;height:360px;border-radius:40px;background:linear-gradient(135deg,#2563eb,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:7rem;color:#fff;box-shadow:0 30px 60px rgba(37,99,235,.3);margin:auto}
+  .hero-stat{background:#fff;border-radius:16px;padding:16px 22px;box-shadow:0 8px 30px rgba(0,0,0,.08);text-align:center}
+  .hero-stat .num{font-size:1.7rem;font-weight:800;color:var(--primary)}
+  .hero-stat .lbl{font-size:.78rem;color:var(--gray)}
+  .floating-card{position:absolute;background:#fff;border-radius:14px;padding:12px 18px;box-shadow:0 10px 30px rgba(0,0,0,.12);font-size:.82rem;font-weight:600}
+  .hero-img-wrap{position:relative}
+  .fc1{top:30px;left:-10px}
+  .fc2{bottom:60px;right:-10px}
+
+  /* SECTIONS */
+  section{padding:90px 0}
+  .section-badge{background:#dbeafe;color:var(--primary);padding:5px 16px;border-radius:50px;font-size:.8rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  .section-title{font-size:2.3rem;font-weight:800;margin:10px 0 14px}
+  .section-sub{color:var(--gray);max-width:500px;margin:0 auto 50px}
+
+  /* ABOUT */
+  #about{background:#f8fafc}
+  .about-img{width:100%;border-radius:24px;background:linear-gradient(135deg,#e0e7ff,#c7d2fe);height:360px;display:flex;align-items:center;justify-content:center;font-size:5.5rem}
+  .about-feature{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px}
+  .about-icon{width:50px;height:50px;background:#dbeafe;border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem;flex-shrink:0}
+  .about-feature h6{font-weight:700;margin-bottom:4px}
+  .about-feature p{color:var(--gray);font-size:.9rem;margin:0}
+  .edu-card{background:#fff;border-radius:16px;padding:18px 22px;border-left:4px solid var(--primary);box-shadow:0 4px 16px rgba(0,0,0,.06);margin-bottom:14px}
+  .edu-card h6{font-weight:700;margin-bottom:2px}
+  .edu-card p{color:var(--gray);font-size:.85rem;margin:0}
+
+  /* SKILLS */
+  .skill-card{background:#f8fafc;border-radius:16px;padding:22px;transition:.3s;border:2px solid transparent}
+  .skill-card:hover{border-color:var(--primary);transform:translateY(-4px)}
+  .skill-icon{font-size:1.8rem;margin-bottom:10px}
+  .skill-bar-wrap{background:#e2e8f0;border-radius:50px;height:8px;margin-top:10px}
+  .skill-bar{background:linear-gradient(90deg,var(--primary),#7c3aed);height:8px;border-radius:50px}
+  .skill-name{font-weight:600;font-size:.93rem}
+  .skill-pct{font-size:.83rem;color:var(--gray)}
+
+  /* EXPERIENCE */
+  #experience{background:#f8fafc}
+  .exp-card{background:#fff;border-radius:20px;padding:30px;box-shadow:0 4px 20px rgba(0,0,0,.07);border-left:4px solid var(--primary);margin-bottom:24px;transition:.3s}
+  .exp-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+  .exp-badge{background:#dbeafe;color:var(--primary);padding:4px 14px;border-radius:50px;font-size:.78rem;font-weight:700}
+  .exp-badge.amazon{background:#fef3c7;color:#92400e}
+
+  /* PROJECTS */
+  .project-card{border:none;border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07);transition:.3s}
+  .project-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
+  .project-thumb{height:190px;display:flex;align-items:center;justify-content:center;font-size:3.5rem}
+  .project-tag{background:#dbeafe;color:var(--primary);padding:3px 12px;border-radius:50px;font-size:.73rem;font-weight:600}
+  .project-links a{color:var(--primary);font-size:.85rem;font-weight:600;text-decoration:none;margin-right:16px}
+  .project-links a:hover{text-decoration:underline}
+
+  /* PACKAGES */
+  .pkg-card{border-radius:24px;padding:38px 34px;border:2px solid #e2e8f0;background:#fff;transition:.3s;position:relative;overflow:hidden}
+  .pkg-card:hover{border-color:var(--primary);transform:translateY(-6px)}
+  .pkg-card.popular{border-color:var(--primary);background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff}
+  .pkg-card.popular .pkg-price,.pkg-card.popular .pkg-name,.pkg-card.popular .pkg-sub{color:#fff}
+  .pkg-card.popular li{color:rgba(255,255,255,.9)}
+  .popular-badge{position:absolute;top:20px;right:20px;background:#fbbf24;color:#92400e;padding:4px 14px;border-radius:50px;font-size:.73rem;font-weight:700}
+  .pkg-name{font-size:1.05rem;font-weight:700;color:var(--dark)}
+  .pkg-price{font-size:2.6rem;font-weight:800;color:var(--primary)}
+  .pkg-price span{font-size:.95rem;font-weight:500}
+  .pkg-sub{color:var(--gray);font-size:.88rem;margin-bottom:26px}
+  .pkg-list{list-style:none;padding:0;margin-bottom:30px}
+  .pkg-list li{padding:7px 0;border-bottom:1px solid #f1f5f9;font-size:.9rem;display:flex;align-items:center;gap:10px}
+  .pkg-card.popular .pkg-list li{border-color:rgba(255,255,255,.2)}
+  .pkg-list li i{color:#10b981}
+  .pkg-card.popular .pkg-list li i{color:#a7f3d0}
+  .btn-pkg{width:100%;padding:13px;border-radius:50px;font-weight:700;font-size:.95rem;border:2px solid var(--primary);color:var(--primary);background:transparent;transition:.2s;cursor:pointer}
+  .btn-pkg:hover{background:var(--primary);color:#fff}
+  .pkg-card.popular .btn-pkg{background:#fff;color:var(--primary);border-color:#fff}
+  .pkg-card.popular .btn-pkg:hover{background:rgba(255,255,255,.85)}
+
+  /* CONTACT */
+  #contact{background:#f8fafc}
+  .contact-card{background:#fff;border-radius:24px;padding:44px;box-shadow:0 8px 40px rgba(0,0,0,.07)}
+  .form-control,.form-select{border:2px solid #e2e8f0;border-radius:12px;padding:13px 17px;font-size:.93rem;transition:.2s}
+  .form-control:focus,.form-select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+  .btn-submit{background:var(--primary);color:#fff;border:none;padding:14px 40px;border-radius:50px;font-weight:700;font-size:1rem;width:100%;transition:.2s;cursor:pointer}
+  .btn-submit:hover{background:#1d4ed8;transform:translateY(-2px)}
+  .contact-info-item{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+  .ci-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+  .ci-icon.blue{background:#dbeafe;color:var(--primary)}
+  .ci-icon.green{background:#d1fae5;color:#059669}
+  .ci-icon.purple{background:#ede9fe;color:#7c3aed}
+  .ci-icon.orange{background:#fef3c7;color:#d97706}
+  .alert-success-custom{background:#d1fae5;color:#065f46;border:none;border-radius:12px;padding:14px 20px;display:none;margin-bottom:18px}
+
+  /* FOOTER */
+  footer{background:var(--dark);color:#94a3b8;padding:50px 0 24px}
+  footer .brand{font-size:1.5rem;font-weight:800;color:#fff}
+  footer .social-link{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.08);display:inline-flex;align-items:center;justify-content:center;color:#94a3b8;text-decoration:none;margin:0 4px;transition:.2s}
+  footer .social-link:hover{background:var(--primary);color:#fff}
+  .footer-link{color:#94a3b8;text-decoration:none;font-size:.9rem;transition:.2s}
+  .footer-link:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#hero">AbdurRehman<span style="color:#7c3aed">.dev</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-2"><a class="nav-link btn-hire" href="#contact">Hire Me</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <div class="hero-badge">👋 Available for Freelance & Full-Time Work</div>
+        <h1 class="hero-title">Hi, I'm <span>Muhammad<br/>AbdurRehman</span></h1>
+        <p style="color:var(--primary);font-weight:700;font-size:1.1rem;margin-bottom:12px">Full Stack Developer &amp; Amazon VA Specialist</p>
+        <p class="hero-sub">I build responsive, scalable web apps and e-commerce solutions — from landing pages to full-stack platforms with payment gateways. Clean code, fast delivery, long-term support.</p>
+        <div class="d-flex flex-wrap gap-3 mb-4">
+          <a href="#projects" class="btn-primary-custom">View My Work</a>
+          <a href="#contact" class="btn-outline-custom">Let's Talk</a>
+        </div>
+        <div class="d-flex gap-3 flex-wrap">
+          <div class="hero-stat"><div class="num">2+</div><div class="lbl">Years Exp.</div></div>
+          <div class="hero-stat"><div class="num">25–30</div><div class="lbl">Live Projects</div></div>
+          <div class="hero-stat"><div class="num">98%</div><div class="lbl">Happy Clients</div></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-img-wrap text-center">
+          <div class="hero-avatar" style="background:none;box-shadow:0 30px 60px rgba(37,99,235,.25);overflow:hidden;padding:0"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/200px-User_icon-cp.svg.png" alt="Muhammad AbdurRehman" style="width:100%;height:100%;object-fit:cover;border-radius:40px" onerror="this.parentElement.innerHTML='👨‍💻'"/></div>
+          <div class="floating-card fc1">🚀 PHP &amp; Bootstrap Expert</div>
+          <div class="floating-card fc2">✅ 25+ Live Projects Delivered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="row align-items-start g-5">
+      <div class="col-lg-5">
+        <div class="about-img" style="background:none;padding:0;overflow:hidden"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/200px-User_icon-cp.svg.png" alt="Muhammad AbdurRehman" style="width:100%;height:100%;object-fit:cover;border-radius:24px" onerror="this.parentElement.innerHTML='👨‍💼'"/></div>
+      </div>
+      <div class="col-lg-7">
+        <div class="section-badge">About Me</div>
+        <h2 class="section-title">Developer. Problem Solver.<br/>Reliable Partner.</h2>
+        <p class="text-muted mb-4">I'm Muhammad AbdurRehman, a Full Stack Developer with expertise in website development, bug fixing, and dashboard creation. I also specialize in Amazon optimization — product listings and sales strategies. I'm committed to delivering high-quality work and client satisfaction. I respect deadlines, write clean code, and stay for long-term support.</p>
+        <div class="about-feature">
+          <div class="about-icon"><i class="fas fa-code"></i></div>
+          <div><h6>Clean Code</h6><p>HTML, CSS, JavaScript, PHP, MySQLi &amp; Bootstrap — written for maintainability and performance.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div><h6>100% Mobile Responsive</h6><p>Every project is cross-browser compatible and pixel-perfect on all devices.</p></div>
+        </div>
+        <div class="about-feature">
+          <div class="about-icon"><i class="fab fa-amazon"></i></div>
+          <div><h6>Amazon VA Expertise</h6><p>1.5 years of experience in Amazon listings, PPC, inventory management and keyword research.</p></div>
+        </div>
+
+        <div class="mt-4">
+          <h5 class="fw-700 mb-3">Education</h5>
+          <div class="edu-card">
+            <span class="exp-badge mb-2 d-inline-block">Matriculation — Computer Science</span>
+            <h6>GHS Aziz-e-Millit, Bahawalnagar</h6>
+            <p>Marks: 760/1100 &nbsp;|&nbsp; 2020 – 2022</p>
+          </div>
+          <div class="edu-card">
+            <span class="exp-badge mb-2 d-inline-block">ICS — Computer Science</span>
+            <h6>Govt. Degree College, Bahawalnagar</h6>
+            <p>2022 – 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">My Skills</div>
+      <h2 class="section-title">Technologies I Work With</h2>
+      <p class="section-sub">A versatile stack covering front-end, back-end, and Amazon marketplace expertise.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">🎨</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">HTML &amp; CSS</span><span class="skill-pct">95%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">🅱️</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">Bootstrap</span><span class="skill-pct">92%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">🟨</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">JavaScript</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">🐘</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">PHP &amp; MySQLi</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">🛍️</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">Shopify</span><span class="skill-pct">82%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">Laravel</span><span class="skill-pct">65%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">📦</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">Amazon A to Z</span><span class="skill-pct">88%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="skill-card">
+          <div class="skill-icon">🖥️</div>
+          <div class="d-flex justify-content-between"><span class="skill-name">MS Office</span><span class="skill-pct">90%</span></div>
+          <div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">Experience</div>
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-sub">2+ years of hands-on development and Amazon marketplace work.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="exp-card h-100">
+          <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+            <div>
+              <span class="exp-badge">Web Development</span>
+              <h5 class="fw-800 mt-2 mb-0">Full Stack Developer</h5>
+              <p class="text-muted small mb-0">Freelance &nbsp;|&nbsp; 2020 – Present</p>
+            </div>
+          </div>
+          <ul class="text-muted" style="font-size:.92rem;padding-left:18px">
+            <li class="mb-2">Built responsive, full-stack websites with modern front-end and back-end technologies.</li>
+            <li class="mb-2">Developed e-commerce platforms with secure payment gateways (Stripe, PayPal) and optimized UX.</li>
+            <li class="mb-2">Wrote clean, efficient code using HTML, CSS, JavaScript, PHP &amp; Bootstrap.</li>
+            <li class="mb-2">Ensured cross-browser compatibility and 100% mobile responsiveness.</li>
+            <li>Debugged, optimized, and maintained applications for performance and scalability.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="exp-card h-100" style="border-left-color:#d97706">
+          <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+            <div>
+              <span class="exp-badge amazon">Amazon Content</span>
+              <h5 class="fw-800 mt-2 mb-0">Amazon Virtual Assistant</h5>
+              <p class="text-muted small mb-0">Ecom Pearls &nbsp;|&nbsp; 2023 – 2024</p>
+            </div>
+          </div>
+          <ul class="text-muted" style="font-size:.92rem;padding-left:18px">
+            <li class="mb-2">Created concise, keyword-optimized product titles to enhance search visibility and attract potential buyers.</li>
+            <li class="mb-2">Wrote compelling bullet points emphasizing key features, benefits, and unique selling points for quick readability.</li>
+            <li class="mb-2">Performed in-depth keyword research to integrate high-impact search terms, improving ranking and discoverability.</li>
+            <li>Managed PPC campaigns, inventory tracking, and Amazon case handling.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">Portfolio</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">A selection of live projects I've built and delivered for clients.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card project-card h-100">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">🛒</div>
+          <div class="card-body p-4">
+            <div class="mb-2"><span class="project-tag">PHP</span> <span class="project-tag">MySQLi</span> <span class="project-tag">Bootstrap</span></div>
+            <h5 class="fw-700 mb-2">E-Commerce Store</h5>
+            <p class="text-muted small">Full-featured online store with product management, secure payment integration, and admin dashboard.</p>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card project-card h-100">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0)">🏪</div>
+          <div class="card-body p-4">
+            <div class="mb-2"><span class="project-tag">Shopify</span> <span class="project-tag">JavaScript</span></div>
+            <h5 class="fw-700 mb-2">Shopify Store</h5>
+            <p class="text-muted small">Custom Shopify store with theme customization, product pages, and optimized mobile checkout.</p>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card project-card h-100">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">📊</div>
+          <div class="card-body p-4">
+            <div class="mb-2"><span class="project-tag">PHP</span> <span class="project-tag">MySQLi</span> <span class="project-tag">Bootstrap</span></div>
+            <h5 class="fw-700 mb-2">Admin Dashboard</h5>
+            <p class="text-muted small">Role-based admin panel with user management, reports, and data visualization charts.</p>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card project-card h-100">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">🏠</div>
+          <div class="card-body p-4">
+            <div class="mb-2"><span class="project-tag">HTML/CSS</span> <span class="project-tag">Bootstrap</span></div>
+            <h5 class="fw-700 mb-2">Real Estate Landing Page</h5>
+            <p class="text-muted small">Responsive property listing landing page with inquiry form and Google Maps integration.</p>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card project-card h-100">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">📦</div>
+          <div class="card-body p-4">
+            <div class="mb-2"><span class="project-tag">Amazon</span> <span class="project-tag">SEO</span></div>
+            <h5 class="fw-700 mb-2">Amazon Listing Optimization</h5>
+            <p class="text-muted small">Keyword-optimized product titles, bullet points, and A+ content for improved search ranking.</p>
+            <div class="project-links"><a href="#">Case Study</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card project-card h-100">
+          <div class="project-thumb" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd)">🍕</div>
+          <div class="card-body p-4">
+            <div class="mb-2"><span class="project-tag">PHP</span> <span class="project-tag">Bootstrap</span> <span class="project-tag">MySQL</span></div>
+            <h5 class="fw-700 mb-2">Restaurant Website</h5>
+            <p class="text-muted small">Online menu, reservation system, and order management with a mobile-first responsive design.</p>
+            <div class="project-links"><a href="#">Live Demo</a><a href="#">GitHub</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">Pricing</div>
+      <h2 class="section-title">Simple, Transparent Packages</h2>
+      <p class="section-sub">Choose the plan that fits your project. All packages include free consultation.</p>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="pkg-card h-100">
+          <div class="pkg-name">Basic</div>
+          <div class="pkg-price">$199<span>/project</span></div>
+          <div class="pkg-sub">Perfect for small websites &amp; landing pages</div>
+          <ul class="pkg-list">
+            <li><i class="fas fa-check"></i> Up to 5 Pages</li>
+            <li><i class="fas fa-check"></i> Responsive Bootstrap Design</li>
+            <li><i class="fas fa-check"></i> Contact Form</li>
+            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+            <li><i class="fas fa-check"></i> 7-Day Delivery</li>
+            <li><i class="fas fa-check"></i> 1 Month Free Support</li>
+          </ul>
+          <button class="btn-pkg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="pkg-card popular h-100">
+          <div class="popular-badge">⭐ Most Popular</div>
+          <div class="pkg-name">Standard</div>
+          <div class="pkg-price">$499<span>/project</span></div>
+          <div class="pkg-sub">Great for business websites &amp; e-commerce</div>
+          <ul class="pkg-list">
+            <li><i class="fas fa-check"></i> Up to 15 Pages</li>
+            <li><i class="fas fa-check"></i> PHP + MySQLi + Bootstrap</li>
+            <li><i class="fas fa-check"></i> Admin Dashboard</li>
+            <li><i class="fas fa-check"></i> Payment Gateway Integration</li>
+            <li><i class="fas fa-check"></i> Cross-Browser Compatible</li>
+            <li><i class="fas fa-check"></i> 14-Day Delivery</li>
+            <li><i class="fas fa-check"></i> 3 Months Free Support</li>
+          </ul>
+          <button class="btn-pkg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="pkg-card h-100">
+          <div class="pkg-name">Premium</div>
+          <div class="pkg-price">$999<span>/project</span></div>
+          <div class="pkg-sub">Full-scale web app, Shopify &amp; custom systems</div>
+          <ul class="pkg-list">
+            <li><i class="fas fa-check"></i> Unlimited Pages</li>
+            <li><i class="fas fa-check"></i> Full Stack (PHP / Shopify / Laravel)</li>
+            <li><i class="fas fa-check"></i> Custom Database Design</li>
+            <li><i class="fas fa-check"></i> Role-Based Authentication</li>
+            <li><i class="fas fa-check"></i> Performance Optimization</li>
+            <li><i class="fas fa-check"></i> 30-Day Delivery</li>
+            <li><i class="fas fa-check"></i> 6 Months Free Support</li>
+          </ul>
+          <button class="btn-pkg" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="text-center mb-5">
+      <div class="section-badge">Contact</div>
+      <h2 class="section-title">Let's Work Together</h2>
+      <p class="section-sub">Have a project in mind? Drop me a message and I'll get back to you within 24 hours.</p>
+    </div>
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <div class="contact-info-item">
+          <div class="ci-icon blue"><i class="fas fa-envelope"></i></div>
+          <div><h6 class="fw-700 mb-1">Email</h6><p class="text-muted mb-0">mabdurrehman347@gmail.com</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon green"><i class="fab fa-whatsapp"></i></div>
+          <div><h6 class="fw-700 mb-1">WhatsApp / Phone</h6><p class="text-muted mb-0">+92 305-5419058</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon purple"><i class="fas fa-map-marker-alt"></i></div>
+          <div><h6 class="fw-700 mb-1">Location</h6><p class="text-muted mb-0">Mohalla Farooqbad, Street #22 West,<br/>Bahawalnagar, Punjab, Pakistan</p></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ci-icon orange"><i class="fas fa-clock"></i></div>
+          <div><h6 class="fw-700 mb-1">Response Time</h6><p class="text-muted mb-0">Within 24 hours</p></div>
+        </div>
+        <div class="mt-2">
+          <p class="fw-600 mb-3">Follow Me</p>
+          <a href="#" style="width:44px;height:44px;background:#dbeafe;color:var(--primary);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;margin-right:8px"><i class="fab fa-github"></i></a>
+          <a href="#" style="width:44px;height:44px;background:#dbeafe;color:var(--primary);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;margin-right:8px"><i class="fab fa-linkedin"></i></a>
+          <a href="#" style="width:44px;height:44px;background:#d1fae5;color:#059669;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;margin-right:8px"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" style="width:44px;height:44px;background:#fef3c7;color:#d97706;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none"><i class="fab fa-upwork"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="contact-card">
+          <div class="alert-success-custom" id="successMsg">
+            <i class="fas fa-check-circle me-2"></i>Thank you! Your message has been sent. I'll reply within 24 hours.
+          </div>
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-600">Full Name *</label>
+                <input type="text" class="form-control" placeholder="Your Name" required/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-600">Email Address *</label>
+                <input type="email" class="form-control" placeholder="your@email.com" required/>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-600">Package Interest</label>
+                <select class="form-select">
+                  <option value="">Select a package...</option>
+                  <option>Basic — $199</option>
+                  <option>Standard — $499</option>
+                  <option>Premium — $999</option>
+                  <option>Custom Project</option>
+                  <option>Amazon VA Services</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-600">Project Type</label>
+                <select class="form-select">
+                  <option value="">Select project type...</option>
+                  <option>Website / Landing Page</option>
+                  <option>E-Commerce Store</option>
+                  <option>Shopify Store</option>
+                  <option>Admin Dashboard</option>
+                  <option>Amazon Optimization</option>
+                  <option>Bug Fixing / Maintenance</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-600">Message *</label>
+                <textarea class="form-control" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-submit">
+                  <i class="fas fa-paper-plane me-2"></i>Send Message
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row align-items-center mb-4">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <div class="brand">AbdurRehman<span style="color:#7c3aed">.dev</span></div>
+        <p class="small mt-2 mb-0">Full Stack Developer &amp; Amazon VA based in Bahawalnagar, Pakistan.</p>
+      </div>
+      <div class="col-md-4 text-md-center mb-3 mb-md-0" style="font-size:.88rem">
+        <a href="#about" class="footer-link me-2">About</a>
+        <a href="#skills" class="footer-link me-2">Skills</a>
+        <a href="#experience" class="footer-link me-2">Experience</a>
+        <a href="#projects" class="footer-link me-2">Projects</a>
+        <a href="#packages" class="footer-link me-2">Packages</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-upwork"></i></a>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,.1)"/>
+    <p class="text-center small mb-0">© 2024 Muhammad AbdurRehman. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+// Active nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+  navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + cur));
+});
+
+// Contact form demo submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('successMsg').style.display = 'block';
+    e.target.reset();
+    btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Send Message';
+    btn.disabled = false;
+  }, 1500);
+}
+</script>
+</body>
+</html>
